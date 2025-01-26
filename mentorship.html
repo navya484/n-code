@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mentorship Programs</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Mentorship Programs</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/mentorship.html">Mentorship</a>
+        </nav>
+    </header>
+    <style>
+        body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                background-color: #f8f9fa;
+                color: #4bc6b9;
+            }
+
+            header {
+                background: linear-gradient(to right, #4bc6b9, #b19cd9);
+                color: white;
+                padding: 20px 10%;
+                text-align: center;
+            }
+
+            header h1 {
+                margin: 0;
+            }
+
+            nav {
+                margin-top: 10px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: white;
+                margin: 0 15px;
+                font-weight: bold;
+            }
+
+            nav a:hover {
+                color: #b19cd9;
+            }
+
+            .mentorship-section, .learning-hub {
+                padding: 40px 10%;
+                text-align: center;
+            }
+
+            .mentorship-section h2, .learning-hub h2 {
+                font-size: 2rem;
+                margin-bottom: 10px;
+                color: #4bc6b9;
+            }
+
+            .mentorship-section p, .learning-hub p {
+                font-size: 1.2rem;
+                margin-bottom: 20px;
+            }
+
+            .cta-btn {
+                background-color: #4bc6b9;
+                color: white;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+
+            .cta-btn:hover {
+                background-color: #3aa89b;
+            }
+
+            .resources-list {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            .resource-card {
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                width: 250px;
+                text-align: center;
+            }
+
+            footer {
+                text-align: center;
+                padding: 20px;
+                background-color: #4bc6b9;
+                color: white;
+                margin-top: 40px;
+            }
+
+    </style>
+    <section class="mentorship-section">
+        <h2>One-on-One Mentorship</h2>
+        <p>Match entrepreneurs with experienced mentors based on expertise and goals.</p>
+        <button class="cta-btn" id="one-on-one-btn">Explore One-on-One Mentorship</button>
+    </section>
+
+    <section class="mentorship-section">
+        <h2>Group Mentorship Sessions</h2>
+        <p>Join weekly Q&A webinars with industry leaders.</p>
+        <button class="cta-btn" id="group-mentorship-btn">View Upcoming Sessions</button>
+    </section>
+
+    <section class="learning-hub">
+        <h2>Learning Hub</h2>
+        <p>Explore free and premium resources like e-books, podcasts, and video lessons on business strategies.</p>
+        <button class="cta-btn" id="learning-hub-btn">Access Resources</button>
+        <div id="resources-list" class="resources-list"></div>
+    </section>
+
+    <footer>
+        &copy; 2025 Women Empowerment Initiative. All rights reserved.
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

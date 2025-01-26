@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Empower Women Entrepreneurs</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/profile">Profile</a>
+            <a href="/sponsorship_finder.html">Find Sponsors</a>
+        </nav>
+    </header>
+
+    <section class="profile">
+        <div class="profile-header">
+            <img src="{{ user.profile_picture }}" alt="Profile Picture" class="profile-img">
+            <h2>{{ user.name }}</h2>
+            <p>{{ user.about }}</p>
+        </div>
+
+        <div class="profile-details">
+            <h3>Skills</h3>
+            <ul>
+                {% for skill in user.skills %}
+                    <li>{{ skill }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Business Details</h3>
+            <p>{{ user.business_details }}</p>
+
+            <h3>Achievements</h3>
+            <ul>
+                {% for achievement in user.achievements %}
+                    <li>{{ achievement }}</li>
+                {% endfor %}
+            </ul>
+
+            <h3>Contact Info</h3>
+            <p>Email: {{ user.contact_info.email }}</p>
+            <p>Phone: {{ user.contact_info.phone }}</p>
+            
+            <h3>Social Media</h3>
+            <ul class="social-links">
+                {% for link in user.social_links %}
+                    <li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+            color: #4bc6b9;
+        }
+        
+        header {
+            background: linear-gradient(to right, #4bc6b9, #b19cd9);
+            color: white;
+            padding: 20px 10%;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+        }
+        
+        nav {
+            margin-top: 20px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: white;
+            margin: 0 10px;
+        }
+        
+        nav a:hover {
+            color: #b19cd9;
+        }
+        
+        .profile {
+            padding: 40px 10%;
+        }
+        
+        .profile-header {
+            text-align: center;
+        }
+        
+        .profile-header img {
+            width: 150px;
+            border-radius: 50%;
+            margin-bottom: 20px;
+        }
+        
+        .profile-details {
+            margin-top: 40px;
+        }
+        
+        .profile-details h3 {
+            color: #4bc6b9;
+        }
+        
+        .profile-details ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .profile-details ul li {
+            margin: 10px 0;
+        }
+        
+        .social-links {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .social-links li {
+            margin: 10px 0;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4bc6b9;
+            color: white;
+        }
+    </style>   
+    <footer>
+        &copy; 2025 Empower Women Entrepreneurs. All rights reserved.
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

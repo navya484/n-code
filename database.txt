@@ -1,0 +1,138 @@
+CREATE DATABASE empower_women;
+
+USE empower_women;
+
+-- Users table
+CREATE TABLE users (
+    user_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Sponsorships table
+CREATE TABLE sponsorships (
+    sponsorship_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Startups table
+CREATE TABLE startups (
+    startup_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    founder VARCHAR(100) NOT NULL,
+    contact_email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Empowerment Initiatives table
+CREATE TABLE empowerment_initiatives (
+    initiative_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Mentorships table
+CREATE TABLE mentorships (
+    mentorship_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    mentor VARCHAR(100) NOT NULL,
+    contact_email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Events table
+CREATE TABLE events (
+    event_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(150) NOT NULL,
+    description TEXT NOT NULL,
+    date DATE NOT NULL,
+    location VARCHAR(255),
+    link VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Testimonials table
+CREATE TABLE testimonials (
+    testimonial_id INT AUTO_INCREMENT PRIMARY KEY,
+    content TEXT NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE TABLE industries (
+    industry_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Funding Stages table
+CREATE TABLE funding_stages (
+    stage_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Regions table
+CREATE TABLE regions (
+    region_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE
+);
+
+-- Sponsor Matches table
+CREATE TABLE sponsor_matches (
+    match_id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    industry_id INT NOT NULL,
+    region_id INT NOT NULL,
+    funding_stage_id INT NOT NULL,
+    business_goals TEXT NOT NULL,
+    sponsor_id INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (industry_id) REFERENCES industries(industry_id),
+    FOREIGN KEY (region_id) REFERENCES regions(region_id),
+    FOREIGN KEY (funding_stage_id) REFERENCES funding_stages(stage_id),
+    FOREIGN KEY (sponsor_id) REFERENCES sponsorships(sponsorship_id)
+);
+
+
+CREATE TABLE startups (
+    startup_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    industry_id INT NOT NULL,
+    region_id INT NOT NULL,
+    contact_email VARCHAR(255) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (industry_id) REFERENCES industries(industry_id),
+    FOREIGN KEY (region_id) REFERENCES regions(region_id)
+);
+
+-- Collaborative Boards table
+CREATE TABLE collaborative_boards (
+    board_id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    description TEXT NOT NULL,
+    created_by INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (created_by) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+-- Board Participants table
+CREATE TABLE board_participants (
+    participant_id INT AUTO_INCREMENT PRIMARY KEY,
+    board_id INT NOT NULL,
+    user_id INT NOT NULL,
+    joined_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (board_id) REFERENCES collaborative_boards(board_id) ON DELETE CASCADE,
+    FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
+);
+
+;

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsorship Finder</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Find Your Perfect Sponsor</h1>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/userprofile.html">Profile</a>
+        </nav>
+    </header>
+<style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #4bc6b9;
+    }
+
+    header {
+        background: linear-gradient(to right, #4bc6b9, #b19cd9);
+        color: white;
+        padding: 20px 10%;
+        text-align: center;
+    }
+
+    header h1 {
+        margin: 0;
+    }
+
+    nav {
+        margin-top: 20px;
+    }
+
+    nav a {
+        text-decoration: none;
+        color: white;
+        margin: 0 10px;
+    }
+
+    nav a:hover {
+        color: #b19cd9;
+    }
+
+    .matchmaking {
+        padding: 40px 10%;
+    }
+
+    .matchmaking form {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .matchmaking label {
+        font-weight: bold;
+    }
+
+    .matchmaking select, .matchmaking input, .matchmaking textarea {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        width: 100%;
+    }
+
+    button {
+        background-color: #4bc6b9;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #3aa89b;
+    }
+
+    .matches {
+        margin-top: 30px;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .match {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #4bc6b9;
+        color: white;
+    }
+
+</style>
+
+    <section class="matchmaking">
+        <h2>Enter Your Business Goals</h2>
+        <form id="sponsorship-form">
+            <label for="industry">Industry:</label>
+            <select id="industry" required>
+                <option value="Tech">Tech</option>
+                <option value="Sustainability">Sustainability</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Retail">Retail</option>
+            </select>
+            <br>
+
+            <label for="region">Region:</label>
+            <input type="text" id="region" placeholder="Enter your region" required>
+            <br>
+
+            <label for="funding_stage">Funding Stage:</label>
+            <select id="funding_stage" required>
+                <option value="Seed">Seed</option>
+                <option value="Series A">Series A</option>
+                <option value="Growth">Growth</option>
+                <option value="Expansion">Expansion</option>
+            </select>
+            <br>
+
+            <label for="goals">Business Goals:</label>
+            <textarea id="goals" placeholder="Describe your business goals" required></textarea>
+            <br>
+
+            <button type="submit">Find Sponsors</button>
+        </form>
+
+        <div id="sponsor-matches" class="matches"></div>
+    </section>
+
+    <footer>
+        &copy; 2025 Empower Women Entrepreneurs. All rights reserved.
+    </footer>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
